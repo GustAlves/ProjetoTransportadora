@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.projeto.Transportadora.entities.Empresa;
 import com.projeto.Transportadora.repositories.EmpresaRepository;
+import com.projeto.Transportadora.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class EmpresaService {
@@ -21,7 +22,7 @@ public class EmpresaService {
 
 	public Empresa findById(Long id) {
 		Optional<Empresa> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 
 	public Empresa insert(Empresa obj) {
