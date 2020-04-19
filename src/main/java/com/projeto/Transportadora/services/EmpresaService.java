@@ -31,4 +31,20 @@ public class EmpresaService {
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
+
+	public Empresa update(Long id, Empresa obj) {
+		Empresa entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	private void updateData(Empresa entity, Empresa obj) {
+		entity.setNomeFilial(obj.getNomeFilial());
+		entity.setAereo(obj.getAereo());
+		entity.setTerrestre(obj.getTerrestre());
+		entity.setValorTotalAereo(obj.getValorTotalAereo());
+		entity.setValorTotalTerrestre(obj.getValorTotalTerrestre());
+		entity.setTempoTotalAereo(obj.getTempoTotalAereo());
+		entity.setTempoTotalTerrestre(obj.getTempoTotalTerrestre());
+	}
 }
