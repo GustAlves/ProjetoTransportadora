@@ -29,8 +29,8 @@ public class Pedido implements Serializable {
 	private String origem;
 	private String destino;
 	private BigDecimal distancia;
-	private Prioridade prioridade;
-	private TipoTransporte tipoTransporte;
+	private Integer prioridade;
+	private Integer tipoTransporte;
 
 	@JsonIgnore
 	@ManyToOne
@@ -48,8 +48,8 @@ public class Pedido implements Serializable {
 		this.origem = origem;
 		this.destino = destino;
 		this.distancia = distancia;
-		this.prioridade = prioridade;
-		this.tipoTransporte = tipoTransporte;
+		setPrioridade(prioridade);
+		setTipoTransporte(tipoTransporte);
 		this.cliente = cliente;
 	}
 
@@ -94,19 +94,23 @@ public class Pedido implements Serializable {
 	}
 
 	public Prioridade getPrioridade() {
-		return prioridade;
+		return Prioridade.valueOf(prioridade);
 	}
 
 	public void setPrioridade(Prioridade prioridade) {
-		this.prioridade = prioridade;
+		if (prioridade != null) {
+			this.prioridade = prioridade.getCode();
+		}
 	}
 
 	public TipoTransporte getTipoTransporte() {
-		return tipoTransporte;
+		return TipoTransporte.valueOf(tipoTransporte);
 	}
 
 	public void setTipoTransporte(TipoTransporte tipoTransporte) {
-		this.tipoTransporte = tipoTransporte;
+		if (tipoTransporte != null) {
+			this.tipoTransporte = tipoTransporte.getCode();
+		}
 	}
 
 	public Empresa getCliente() {

@@ -2,16 +2,24 @@ package com.projeto.Transportadora.enuns;
 
 public enum Prioridade {
 
-	Preco("preco"), 
-	Tempo("tempo");
+	Preco(1), Tempo(2);
 
-	private String prioridade;
+	private int code;
 
-	Prioridade(String prioridade) {
-		this.prioridade = prioridade;
+	private Prioridade(int code) {
+		this.code = code;
 	}
 
-	public String getPrioridade() {
-		return prioridade;
+	public int getCode() {
+		return code;
+	}
+
+	public static Prioridade valueOf(int code) {
+		for (Prioridade value : Prioridade.values()) {
+			if (value.getCode() == code) {
+				return value;
+			}
+		}
+		throw new IllegalArgumentException("Prioridade Invalida");
 	}
 }
