@@ -27,8 +27,8 @@ public class TestConfig implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Empresa empresa1 = new Empresa(null, "Filial1", true, false, 100.00, 0.0, 50, 0);
-		Empresa empresa2 = new Empresa(null, "Filial2", false, true, 0.00, 50.0, 0, 30);
+		Empresa empresa1 = new Empresa(null, "Filial1", true, false, new BigDecimal(100.00), new BigDecimal(0.0), 50,0);
+		Empresa empresa2 = new Empresa(null, "Filial2", false, true, new BigDecimal(0.00), new BigDecimal(50.0), 0, 30);
 
 		Pedido p1 = new Pedido(null, Instant.parse("2020-04-18T19:15:07Z"), "Araras", "Limeira", new BigDecimal(30),
 				Prioridade.Preco, TipoTransporte.Terrestre, empresa2);

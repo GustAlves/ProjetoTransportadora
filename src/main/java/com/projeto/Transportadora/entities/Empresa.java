@@ -1,6 +1,7 @@
 package com.projeto.Transportadora.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class Empresa implements Serializable {
 	private String nomeFilial;
 	private Boolean aereo;
 	private Boolean terrestre;
-	private Double valorTotalAereo;
-	private Double valorTotalTerrestre;
+	private BigDecimal valorTotalAereo;
+	private BigDecimal valorTotalTerrestre;
 	private Integer tempoTotalAereo;
 	private Integer tempoTotalTerrestre;
 
@@ -31,8 +32,8 @@ public class Empresa implements Serializable {
 	public Empresa() {
 	}
 
-	public Empresa(Long id, String nomeFilial, Boolean aereo, Boolean terrestre, Double valorTotalAereo,
-			Double valorTotalTerrestre, Integer tempoTotalAereo, Integer tempoTotalTerrestre) {
+	public Empresa(Long id, String nomeFilial, Boolean aereo, Boolean terrestre, BigDecimal valorTotalAereo,
+			BigDecimal valorTotalTerrestre, Integer tempoTotalAereo, Integer tempoTotalTerrestre) {
 		super();
 		this.id = id;
 		this.nomeFilial = nomeFilial;
@@ -76,19 +77,19 @@ public class Empresa implements Serializable {
 		this.terrestre = terrestre;
 	}
 
-	public Double getValorTotalAereo() {
+	public BigDecimal getValorTotalAereo() {
 		return valorTotalAereo;
 	}
 
-	public void setValorTotalAereo(Double valorTotalAereo) {
+	public void setValorTotalAereo(BigDecimal valorTotalAereo) {
 		this.valorTotalAereo = valorTotalAereo;
 	}
 
-	public Double getValorTotalTerrestre() {
+	public BigDecimal getValorTotalTerrestre() {
 		return valorTotalTerrestre;
 	}
 
-	public void setValorTotalTerrestre(Double valorTotalTerrestre) {
+	public void setValorTotalTerrestre(BigDecimal valorTotalTerrestre) {
 		this.valorTotalTerrestre = valorTotalTerrestre;
 	}
 

@@ -3,6 +3,8 @@ package com.projeto.Transportadora.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.projeto.Transportadora.entities.Empresa;
+import com.projeto.Transportadora.entities.Pedido;
 import com.projeto.Transportadora.services.EmpresaService;
 
 @RestController
@@ -54,5 +57,10 @@ public class EmpresaResource {
 	public ResponseEntity<Empresa> update(@PathVariable Long id, @RequestBody Empresa obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
+	}
+
+	@GetMapping("/MelhorTransportadora")
+	public ResponseEntity<?> melhorTransportadora(@Valid @RequestBody Pedido pedido) {
+		return ResponseEntity.ok().body(pedido);
 	}
 }
