@@ -36,7 +36,7 @@ public class PedidoService {
 			// Valida campos obrigatórios
 			if (pedido.getOrigem() == null || pedido.getDestino() == null || pedido.getDistancia() == null
 					|| pedido.getPrioridade() == null) {
-				return ResponseEntity.badRequest().build();
+				throw new Exception("Campos obrigatórios não informados");
 			}
 
 			List<Empresa> empresasFiliais = new ArrayList<Empresa>();
@@ -72,8 +72,7 @@ public class PedidoService {
 
 				empresasFiliais.add(empresa);
 			}
-
-			return ResponseEntity.ok(empresasFiliais.get(0));
+			return ResponseEntity.ok().body(empresasFiliais.get(0));
 		} catch (Exception e) {
 			throw new DatabaseException(e.getMessage());
 		}
