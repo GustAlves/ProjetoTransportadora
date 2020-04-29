@@ -124,6 +124,7 @@ public class PedidoService {
 					});
 				}
 			}
+			
 			return ResponseEntity.ok().body(empresasFiliais.get(0));
 		} catch (Exception e) {
 			throw new DatabaseException(e.getMessage());
