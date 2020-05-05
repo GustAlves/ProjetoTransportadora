@@ -64,12 +64,7 @@ public class PedidoService {
 				empresa.setValorTotalTerrestre(valorTotalTerrestre);
 
 				// Converte tempo em minutos
-				empresa.setTempoTotalAereo(
-						(empresaCorrente.getTempoTotalAereo() * Integer.parseInt(pedido.getDistancia().toString()))
-								/ 60);
-				empresa.setTempoTotalTerrestre(
-						(empresaCorrente.getTempoTotalTerrestre() * Integer.parseInt(pedido.getDistancia().toString()))
-								/ 60);
+				converteTempoEmMinutos(empresa, empresaCorrente, pedido);
 
 				empresasFiliais.add(empresa);
 			}
@@ -124,7 +119,7 @@ public class PedidoService {
 					});
 				}
 			}
-			
+
 			return ResponseEntity.ok().body(empresasFiliais.get(0));
 		} catch (Exception e) {
 			throw new DatabaseException(e.getMessage());
@@ -144,5 +139,13 @@ public class PedidoService {
 		if (pedido.getPrioridade() == null) {
 			throw new Exception("Campo Prioridade é obrigatório");
 		}
+	}
+
+	private void converteTempoEmMinutos(Empresa empresa, Empresa empresaCorrente, Pedido pedido) {
+
+		empresa.setTempoTotalAereo(
+				(empresaCorrente.getTempoTotalAereo() * Integer.parseInt(pedido.getDistancia().toString())) / 60);
+		empresa.setTempoTotalTerrestre(
+				(empresaCorrente.getTempoTotalTerrestre() * Integer.parseInt(pedido.getDistancia().toString())) / 60);
 	}
 }
